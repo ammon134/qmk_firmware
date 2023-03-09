@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * | Shift|   ^  |   &  |  )   |   }  |   ]  |-------|    |-------|   0  |   1  |   2  |   3  |   \  | F12  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR | RAlt | RGUI |
+ *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR |  .   | TO(0)|
  *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
  *            `----------------------------------'            '------''---------------------------'
  */
@@ -87,28 +87,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  KC_EXLM,  KC_AT, KC_UNDS,  KC_DLR, KC_PERC,                        KC_PLUS,  KC_7,   KC_8,    KC_9,  KC_ASTR, KC_BSPC,
   _______, KC_EQL, KC_COLN , KC_LPRN, KC_LCBR, KC_LBRC,                       KC_MINS,  KC_4,   KC_5,    KC_6,  KC_SLSH, KC_PIPE,
   _______,  KC_EQL, KC_MINS, KC_RPRN, KC_RCBR, KC_RBRC, _______,       _______, KC_0,   KC_1,   KC_2,    KC_3,  KC_BSLS,  KC_F12,
-                       _______, _______, _______, _______, _______,       _______, _______, _______, _______, TO(0)
+                       _______, _______, _______, _______, _______,       _______, _______, _______, KC_PDOT, TO(0)
 ),
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |      |      |En/Vi |      |      |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
+ * | Tab  |      |En/Vi |      |      | LPad |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |      | LCtl |LShift| LAlt | Caps |-------.    ,-------| PgDwn| Left | Down | Rigth|      | Bspc |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * |Shift | Undo |  Cut | Copy | Paste| Redo |-------|    |-------|      | LStr |      | LEnd | DLine| Shift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR | RAlt | RGUI |
+ *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR | TO(0)|      |
  *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
  *            `----------------------------------'            '------''---------------------------'
  */
 [_RAISE] = LAYOUT(
-  _______, _______ , _______ , _______ , _______ , _______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______,  XXXXXXX,  XXXXXXX, A(KC_SPC),  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
+  _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
+  _______, XXXXXXX, A(KC_SPC), XXXXXXX,  XXXXXXX, KC_LPAD,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
   _______, XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT, KC_CAPS,                       A(KC_DOWN),  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_BSPC,
   _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_REDO,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
-                         _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), _______
+                         _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), XXXXXXX
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -369,9 +369,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {
         if (clockwise) { 
-            tap_code(KC_BRMU);
+            tap_code(KC_BRIU);
         } else {
-            tap_code(KC_BRMD);
+            tap_code(KC_BRID);
         }
     }
     return true;

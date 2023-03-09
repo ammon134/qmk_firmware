@@ -40,3 +40,6 @@ for more options.
     #define TAPPING_TERM 150
 #endif
 #define PERMISSIVE_HOLD
+
+// Turn on CAPS WORD
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
