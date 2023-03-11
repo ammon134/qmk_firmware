@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |      |En/Vi |      |      | LPad |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
+ * | Tab  |      |En/Vi |      |      |      |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |      | LCtl |LShift| LAlt | Caps |-------.    ,-------| PgDwn| Left | Down | Rigth|      | Bspc |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______, XXXXXXX, A(KC_SPC), XXXXXXX,  XXXXXXX, KC_LPAD,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
+  _______, XXXXXXX, A(KC_SPC), XXXXXXX,  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
   _______, XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT, KC_CAPS,                       A(KC_DOWN),  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_BSPC,
   _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_REDO,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), XXXXXXX

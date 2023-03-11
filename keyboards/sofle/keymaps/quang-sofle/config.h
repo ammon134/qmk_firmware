@@ -37,7 +37,7 @@ for more options.
 #define TAPPING_FORCE_HOLD
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
-    #define TAPPING_TERM 150
+    #define TAPPING_TERM 175
 #endif
 #define PERMISSIVE_HOLD
 
