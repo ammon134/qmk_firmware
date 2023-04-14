@@ -34,8 +34,8 @@ for more options.
 #define RGB_DI_PIN D3
 
 // Fine tuning space fn tap hold timing
-// #define TAPPING_FORCE_HOLD
-#define QUICK_TAP_TERM 0
+#define QUICK_TAP_TERM_PER_KEY
+
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
     #define TAPPING_TERM 175
