@@ -34,12 +34,13 @@ for more options.
 #define RGB_DI_PIN D3
 
 // Fine tuning space fn tap hold timing
-#define TAPPING_FORCE_HOLD
+// #define TAPPING_FORCE_HOLD
+#define QUICK_TAP_TERM 0
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
     #define TAPPING_TERM 175
 #endif
-#define PERMISSIVE_HOLD
+// #define PERMISSIVE_HOLD
 
 // Turn on CAPS WORD
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
