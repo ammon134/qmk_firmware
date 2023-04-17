@@ -93,7 +93,7 @@ KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), KC_ENT,     MO(_RAISE), MT(MOD_LSFT
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |      |En/Vi |      |      |      |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
+ * | Tab  |      |En/Vi |Raycast|     |      |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |      | LCtl |LShift| LAlt | Caps |-------.    ,-------| PgDwn| Left | Down | Rigth|      | Bspc |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
@@ -107,7 +107,7 @@ KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), KC_ENT,     MO(_RAISE), MT(MOD_LSFT
   _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
   _______, XXXXXXX, A(KC_SPC), C(KC_SPC),  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
   _______, XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT, KC_CAPS,                       A(KC_DOWN),  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_BSPC,
-  _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_REDO,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
+  _______,KC_UNDO, KC_CUT, KC_COPY, KC_REDO, KC_PASTE,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), XXXXXXX
 ),
 /* ADJUST
