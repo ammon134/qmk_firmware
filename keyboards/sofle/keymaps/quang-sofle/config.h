@@ -42,5 +42,5 @@ for more options.
 #endif
 // #define PERMISSIVE_HOLD
 
-// Turn on CAPS WORD
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+// // Turn on CAPS WORD
+// #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
