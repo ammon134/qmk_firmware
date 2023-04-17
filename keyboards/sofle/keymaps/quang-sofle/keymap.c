@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_BSPC,
   KC_ESC,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_MUTE,     XXXXXXX,KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), LT(_LOWER, KC_ENT),     MO(_RAISE), MT(MOD_LSFT, KC_BSPC), KC_RCTL, TO(_LOWER), TO(_RAISE)
+KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), KC_ENT,     MO(_RAISE), MT(MOD_LSFT, KC_BSPC), KC_RCTL, TO(_LOWER), TO(_RAISE)
 ),
 /*
  * COLEMAK
@@ -66,7 +66,7 @@ KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), LT(_LOWER, KC_ENT),     MO(_RAISE),
   KC_TAB,   KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_BSPC,
   KC_ESC,   KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,  KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,      XXXXXXX,KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), LT(_LOWER, KC_ENT),     MO(_RAISE), MT(MOD_LSFT, KC_BSPC), KC_RCTL, TO(_LOWER), TO(_RAISE)
+KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), KC_ENT,     MO(_RAISE), MT(MOD_LSFT, KC_BSPC), KC_RCTL, TO(_LOWER), TO(_RAISE)
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -105,7 +105,7 @@ KC_LGUI,KC_LALT,KC_LCTL, LT(_LOWER, KC_SPC), LT(_LOWER, KC_ENT),     MO(_RAISE),
  */
 [_RAISE] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______, XXXXXXX, A(KC_SPC), XXXXXXX,  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
+  _______, XXXXXXX, A(KC_SPC), C(KC_SPC),  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
   _______, XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT, KC_CAPS,                       A(KC_DOWN),  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_BSPC,
   _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_REDO,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), XXXXXXX
@@ -363,7 +363,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case LT(_LOWER, KC_SPC):
             return 0;
         default:
-            return QUICK_TAP_TERM;
+            return QUICK_TAP_TERM - 50;
     }
 }
 
