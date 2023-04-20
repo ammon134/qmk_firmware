@@ -363,7 +363,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case LT(_LOWER, KC_SPC):
             return 0;
         default:
-            return QUICK_TAP_TERM - 50;
+            return 125;
     }
 }
 
