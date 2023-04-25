@@ -83,7 +83,7 @@ KC_LGUI,KC_LALT,CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),     MO(
  */
 [_LOWER] = LAYOUT(
   _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-  _______,  KC_EXLM,  KC_AT, KC_UNDS,  KC_DLR, KC_PERC,                        KC_PLUS,  KC_7,   KC_8,    KC_9,  KC_ASTR, KC_BSPC,
+  _______,  KC_EXLM,  KC_AT, KC_UNDS,  KC_DLR, KC_PERC,                        KC_PLUS,  KC_7,   KC_8,    KC_9,  KC_ASTR, KC_DEL,
   _______, KC_EQL, KC_COLN , KC_LPRN, KC_LCBR, KC_LBRC,                       KC_MINS,  KC_4,   KC_5,    KC_6,  KC_SLSH, KC_PIPE,
   _______,  KC_UNDS, KC_MINS, KC_RPRN, KC_RCBR, KC_RBRC, _______,       _______, KC_0,   KC_1,   KC_2,    KC_3,  KC_BSLS,  KC_F12,
                        _______, _______, _______, _______, _______,       _______, _______, _______, KC_PDOT, TO(0)
@@ -104,7 +104,7 @@ KC_LGUI,KC_LALT,CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),     MO(
  */
 [_RAISE] = LAYOUT(
   _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______, XXXXXXX, A(KC_SPC), C(KC_SPC),  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_BSPC,
+  _______, XXXXXXX, A(KC_SPC), C(KC_SPC),  XXXXXXX, XXXXXXX,                       A(KC_UP), KC_PRVWD,   KC_UP, KC_NXTWD,A(KC_BSPC), KC_DEL,
   _______, XXXXXXX,  KC_LCTL,  KC_LSFT,  KC_LALT, KC_CAPS,                       A(KC_DOWN),  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_BSPC,
   _______,KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_REDO,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,  KC_DLINE, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, TO(0), XXXXXXX
