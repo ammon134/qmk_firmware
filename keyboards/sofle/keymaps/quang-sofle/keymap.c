@@ -87,7 +87,7 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
     _______,   KC_EXLM, KC_AT,   KC_UNDS, KC_DLR,  KC_PERC,                         KC_PLUS,  KC_7,   KC_8,    KC_9,   KC_ASTR, TO(_RAISE),
     TO(0)  ,   KC_AMPR, KC_COLN, KC_LPRN, KC_LCBR, KC_LBRC,                         KC_MINS,  KC_4,   KC_5,    KC_6,   KC_SLSH, KC_PIPE,
     _______,   KC_CIRC, KC_UNDS, KC_RPRN, KC_RCBR, KC_RBRC, KC_MPLY,       _______, KC_0,     KC_1,   KC_2,    KC_3,   KC_BSLS, KC_F12,
-                        _______, _______, _______, _______, _______,       _______, _______, _______, KC_PDOT, _______
+                        _______, _______, _______, _______, _______,       _______, _______, KC_PDOT, _______, _______
 ),
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
