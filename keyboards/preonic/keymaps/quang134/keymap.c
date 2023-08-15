@@ -33,8 +33,6 @@ enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
   DWARFQ2,
-  LOWER,
-  RAISE,
   BACKLIT
 };
 
@@ -231,26 +229,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case LOWER:
-          if (record->event.pressed) {
-            layer_on(_NUMPAD);
-            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
-          } else {
-            layer_off(_NUMPAD);
-            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
-          }
-          return false;
-          break;
-        case RAISE:
-          if (record->event.pressed) {
-            layer_on(_NAV);
-            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
-          } else {
-            layer_off(_NAV);
-            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
-          }
-          return false;
-          break;
         case BACKLIT:
           if (record->event.pressed) {
             register_code(KC_RSFT);
@@ -389,8 +367,8 @@ void matrix_scan_user(void) {
 
 bool music_mask_user(uint16_t keycode) {
   switch (keycode) {
-    case RAISE:
-    case LOWER:
+    case LT(_NAV, KC_ENT):
+    case LT(_NUMPAD, KC_SPC):
       return false;
     default:
       return true;
