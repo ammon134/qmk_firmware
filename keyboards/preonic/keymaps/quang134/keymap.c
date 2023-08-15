@@ -16,6 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
+#include "features/achordion.h"
 
 enum preonic_layers {
   _QWERTY,
@@ -57,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,             KC_W,            KC_E,              KC_R,               KC_T,                 KC_DOWN,            KC_UP,                KC_Y,                 KC_U,                   KC_I,                 KC_O,             KC_P   , 
     CTL_T(KC_A),      ALT_T(KC_S),     SFT_T(KC_D),       GUI_T(KC_F),        KC_G,                 KC_LEFT,            KC_RGHT,              KC_H,                 RGUI_T(KC_J),           RSFT_T(KC_K),         RALT_T(KC_L),     RCTL_T(KC_SCLN),    
     KC_Z,             KC_X,            KC_C,              KC_V,               KC_B,                 KC_MINUS,           KC_EQUAL,             KC_K,                 KC_H,                   KC_COMM,              KC_DOT ,          KC_SLSH, 
-    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
+    BACKLIT,          MO(_ADJUST),     LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),  OSL(_SYMBOL),         XXXXXXX,          XXXXXXX
 ),
 
 /* Colemak
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,             KC_W,            KC_F,              KC_P,               KC_B,                 KC_DOWN,            KC_UP,                KC_J,                 KC_L,                   KC_U,                 KC_Y,             KC_COMM, 
     CTL_T(KC_A),      ALT_T(KC_R),     SFT_T(KC_S),       GUI_T(KC_T),        KC_G,                 KC_LEFT,            KC_RGHT,              KC_M,                 RGUI_T(KC_N),           RSFT_T(KC_E),         RALT_T(KC_I),     RCTL_T(KC_O),    
     KC_Z,             KC_X,            KC_C,              KC_D,               KC_V,                 KC_MINUS,           KC_EQUAL,             KC_K,                 KC_H,                   KC_QUOT,              KC_SLSH,          KC_DOT, 
-    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
+    BACKLIT,          MO(_ADJUST),     LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),  OSL(_SYMBOL),         XXXXXXX,          XXXXXXX
 ),
 
 /* Dvorak -> Dwarfq2
@@ -99,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F,             KC_L,            KC_H,              KC_D,               KC_V,                 KC_DOWN,            KC_UP,                KC_Z,                 KC_Y,                   KC_O,                 KC_U,             KC_COMM, 
     CTL_T(KC_S),      ALT_T(KC_R),     SFT_T(KC_N),       GUI_T(KC_T),        KC_M,                 KC_LEFT,            KC_RGHT,              KC_G,                 RGUI_T(KC_C),           RSFT_T(KC_E),         RALT_T(KC_I),     RCTL_T(KC_A),    
     KC_J,             KC_X,            KC_B,              KC_K,               KC_Q,                 KC_MINUS,           KC_EQUAL,             KC_P,                 KC_W,                   KC_QUOT,              KC_SLSH,          KC_DOT, 
-    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
+    BACKLIT,          MO(_ADJUST),     LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),  OSL(_SYMBOL),         XXXXXXX,          XXXXXXX
 ),
 
 /* Symbol
@@ -201,8 +202,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_preonic_grid(
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  AU_ON,   AU_NEXT, MU_ON  , MU_NEXT, MI_ON,   _______, QK_BOOT, DB_TOGG, _______, _______, _______, _______,
-  AU_OFF , AU_PREV, MU_OFF , _______, MI_OFF,  _______, CG_NORM, CG_SWAP, _______, _______, _______, _______,
+  AU_ON,   AU_NEXT, MU_ON  , MU_NEXT, MI_ON,   _______, _______, QK_BOOT, DB_TOGG, _______, _______, _______,
+  AU_OFF , AU_PREV, MU_OFF , _______, MI_OFF,  _______, _______, CG_NORM, CG_SWAP, _______, _______, _______,
   COLEMAK, DWARFQ2, QWERTY , _______, _______, _______, _______, _______, _______, _______, _______, _______, 
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
@@ -270,8 +271,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-      }
-    return true;
+      };
+  if (!process_achordion(keycode, record)) { 
+    return false; 
+  }
+  return true;
 };
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
@@ -281,6 +285,31 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         default:
             return 125;
     }
+}
+
+bool achordion_eager_mod(uint8_t mod) {
+  switch (mod) {
+    case MOD_LSFT:
+    case MOD_RSFT:
+    case MOD_LCTL:
+    case MOD_RCTL:
+      return true;  // Eagerly apply Shift and Ctrl mods.
+
+    default:
+      return false;
+  }
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row >= 4) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 bool muse_mode = false;
@@ -355,6 +384,7 @@ void matrix_scan_user(void) {
         }
     }
 #endif
+  achordion_task();
 }
 
 bool music_mask_user(uint16_t keycode) {
