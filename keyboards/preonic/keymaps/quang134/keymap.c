@@ -20,9 +20,9 @@
 enum preonic_layers {
   _QWERTY,
   _COLEMAK,
-  _DVORAK,
+  _DWARFQ2,
   _SYMBOL,
-  _NUMPAD
+  _NUMPAD,
   _NAV,
   _FUN,
   _ADJUST
@@ -31,7 +31,7 @@ enum preonic_layers {
 enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
-  DVORAK,
+  DWARFQ2,
   LOWER,
   RAISE,
   BACKLIT
@@ -53,11 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid(
-                      KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,      KC_5,      KC_6,              KC_7,                     KC_8,    KC_9,    KC_0,    KC_BSPC,
-                      KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,   KC_DOWN,     KC_UP,              KC_Y,                     KC_U,    KC_I,    KC_O,    KC_P,    
-                      KC_A,     KC_S,    KC_D,    KC_F,    KC_G,   KC_LEFT,   KC_RGHT,              KC_H,                     KC_J,    KC_K,    KC_L,    KC_SCLN, 
-                      KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,  KC_MINUS,  KC_EQUAL,              KC_N,                     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, 
-LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT), LT(_RAISE, KC_ENT),   MT(MOD_RSFT, KC_BSPC), MT(MOD_RGUI, KC_LEFT),  KC_DOWN,  KC_UP,   KC_RGHT
+    KC_GRV,           KC_1,            KC_2,              KC_3,               KC_4,                 KC_5,               KC_6,                 KC_7,                 KC_8,                   KC_9,                 KC_0,             KC_BSPC,
+    KC_Q,             KC_W,            KC_E,              KC_R,               KC_T,                 KC_DOWN,            KC_UP,                KC_Y,                 KC_U,                   KC_I,                 KC_O,             KC_P   , 
+    CTL_T(KC_A),      ALT_T(KC_S),     SFT_T(KC_D),       GUI_T(KC_F),        KC_G,                 KC_LEFT,            KC_RGHT,              KC_H,                 RGUI_T(KC_J),           RSFT_T(KC_K),         RALT_T(KC_L),     RCTL_T(KC_SCLN),    
+    KC_Z,             KC_X,            KC_C,              KC_V,               KC_B,                 KC_MINUS,           KC_EQUAL,             KC_K,                 KC_H,                   KC_COMM,              KC_DOT ,          KC_SLSH, 
+    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
 ),
 
 /* Colemak
@@ -78,7 +78,7 @@ LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_
     KC_Q,             KC_W,            KC_F,              KC_P,               KC_B,                 KC_DOWN,            KC_UP,                KC_J,                 KC_L,                   KC_U,                 KC_Y,             KC_COMM, 
     CTL_T(KC_A),      ALT_T(KC_R),     SFT_T(KC_S),       GUI_T(KC_T),        KC_G,                 KC_LEFT,            KC_RGHT,              KC_M,                 RGUI_T(KC_N),           RSFT_T(KC_E),         RALT_T(KC_I),     RCTL_T(KC_O),    
     KC_Z,             KC_X,            KC_C,              KC_D,               KC_V,                 KC_MINUS,           KC_EQUAL,             KC_K,                 KC_H,                   KC_QUOT,              KC_SLSH,          KC_DOT, 
-    BACKLIT,          KC_LCTL,         LT(_FUN, KC_ESC),  LT(_LOWER, KC_SPC), LT(_RAISE, KC_TAB),   LT(_RAISE, KC_ENT), LT(_RAISE, KC_ENT),   LT(_LOWER, KC_BSPC),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  KC_UP,            KC_RGHT
+    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
 ),
 
 /* Dvorak -> Dwarfq2
@@ -94,12 +94,12 @@ LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_
  * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_DVORAK] = LAYOUT_preonic_grid(
-                        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,                   KC_7,       KC_8,    KC_9,    KC_0,    KC_BSPC,
-  MT(MOD_LGUI|MOD_LSFT,KC_TAB),  KC_F,    KC_L,    KC_H,    KC_D,    KC_V,    LT(_ADJUST, KC_DEL),    KC_Z,       KC_Y,    KC_O,    KC_U,    KC_COMM, 
-          MT(MOD_LCTL, KC_ESC),  KC_S,    KC_R,    KC_N,    KC_T,    KC_M,    KC_SCLN,                KC_G,       KC_C,    KC_E,    KC_I,    KC_A,    
-                       KC_LSFT,  KC_J,    KC_X,    KC_B,    KC_K,    KC_Q,    KC_EQUAL,               KC_P,       KC_W,    KC_QUOT, KC_SLSH, KC_DOT, 
-LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT), LT(_RAISE, KC_ENT),   MT(MOD_RSFT, KC_BSPC), MT(MOD_RGUI, KC_LEFT),  KC_DOWN,  KC_UP,   KC_RGHT
+[_DWARFQ2] = LAYOUT_preonic_grid(
+    KC_GRV,           KC_1,            KC_2,              KC_3,               KC_4,                 KC_5,               KC_6,                 KC_7,                 KC_8,                   KC_9,                 KC_0,             KC_BSPC,
+    KC_F,             KC_L,            KC_H,              KC_D,               KC_V,                 KC_DOWN,            KC_UP,                KC_Z,                 KC_Y,                   KC_O,                 KC_U,             KC_COMM, 
+    CTL_T(KC_S),      ALT_T(KC_R),     SFT_T(KC_N),       GUI_T(KC_T),        KC_M,                 KC_LEFT,            KC_RGHT,              KC_G,                 RGUI_T(KC_C),           RSFT_T(KC_E),         RALT_T(KC_I),     RCTL_T(KC_A),    
+    KC_J,             KC_X,            KC_B,              KC_K,               KC_Q,                 KC_MINUS,           KC_EQUAL,             KC_P,                 KC_W,                   KC_QUOT,              KC_SLSH,          KC_DOT, 
+    BACKLIT,          XXXXXXX,         LT(_FUN, KC_ESC),  LT(_NUMPAD, KC_SPC),LT(_NAV, KC_TAB),     LT(_NAV, KC_ENT),   LT(_NAV, KC_ENT),     LT(_SYMBOL, KC_ENT),  MT(MOD_RSFT, KC_BSPC),  LT(_ADJUST, KC_DEL),  XXXXXXX,          XXXXXXX
 ),
 
 /* Symbol
@@ -118,8 +118,8 @@ LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_
 [_SYMBOL] = LAYOUT_preonic_grid(
   KC_TILD, KC_F1,   KC_F2,   KC_F3,     KC_F4,    KC_F5,   KC_F6,   KC_F7,   KC_F8,          KC_F9,          KC_F10,         KC_F11,
   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,    KC_PERC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
-  KC_AMPR, KC_COLN, KC_LPRN, KC_LCBR,   KC_LBRC,  XXXXXXX, XXXXXXX, XXXXXXX, OSM(MOD_RGUI),  OSM(MOD_RSFT),  OSM(MOD_RALT),  OSM(MOD_RCTL)
-  KC_CIRC, KC_UNDS, KC_RPRN, KC_RCBR,   KC_RBRC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+  KC_AMPR, KC_COLN, KC_LPRN, KC_LCBR,   KC_LBRC,  XXXXXXX, XXXXXXX, XXXXXXX, OSM(MOD_RGUI),  OSM(MOD_RSFT),  OSM(MOD_RALT),  OSM(MOD_RCTL),
+  KC_CIRC, KC_BSLS, KC_RPRN, KC_RCBR,   KC_RBRC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
   XXXXXXX, XXXXXXX, TO(0)  , KC_MINUS,  KC_EQUAL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX
 ),
 
@@ -180,9 +180,9 @@ LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_
  */
 [_FUN] = LAYOUT_preonic_grid(
   _______,        _______,        _______,        _______,        _______,    _______,    _______,    _______,    _______,    _______,   _______,   _______,
-  XXXXXXX,        XXXXXXX,        XXXXXXX,        LSG(KC_4),      LSG(KC_5),  XXXXXXX,    XXXXXXX,    KC_F12,     KC_F7,      KC_F8,     KC_F9,     A(KC_BSPC),
-  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  KC_CAPS,    XXXXXXX,    XXXXXXX,    KC_F11,     KC_F4,      KC_F5,     KC_F6,     XXXXXXX,
-  G(KC_Z),        G(KC_X),        G(KC_C),        G(KC_V),        LSG(KC_Z),  XXXXXXX,    XXXXXXX,    KC_F10,     KC_F1,      KC_F2,     KC_F3,     G(KC_BSPC),
+  XXXXXXX,        XXXXXXX,        XXXXXXX,        LSG(KC_4),      LSG(KC_5),  KC_VOLD,    KC_VOLU,    KC_F12,     KC_F7,      KC_F8,     KC_F9,     A(KC_BSPC),
+  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  KC_CAPS,    KC_MUTE,    KC_MPLY,    KC_F11,     KC_F4,      KC_F5,     KC_F6,     XXXXXXX,
+  G(KC_Z),        G(KC_X),        G(KC_C),        G(KC_V),        LSG(KC_Z),  KC_BRMD,    KC_BRMU,    KC_F10,     KC_F1,      KC_F2,     KC_F3,     G(KC_BSPC),
   XXXXXXX,        XXXXXXX,        TO(0)  ,        XXXXXXX,        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_BSPC,    XXXXXXX,   XXXXXXX,   XXXXXXX
 ),
 
@@ -202,8 +202,8 @@ LT(_RAISE, BACKLIT), KC_LCTL, ALT_T(KC_EQUAL),  GUI_T(KC_MINUS),  LT(_LOWER, KC_
 [_ADJUST] = LAYOUT_preonic_grid(
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   AU_ON,   AU_NEXT, MU_ON  , MU_NEXT, MI_ON,   _______, QK_BOOT, DB_TOGG, _______, _______, _______, _______,
-  AU_OFF , AU_PREV, MU_OFF , MU_PREV, MI_OFF,  _______, CG_NORM, CG_SWAP, _______, _______, _______, _______,
-  COLEMAK, DVORAK , QWERTY , _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+  AU_OFF , AU_PREV, MU_OFF , _______, MI_OFF,  _______, CG_NORM, CG_SWAP, _______, _______, _______, _______,
+  COLEMAK, DWARFQ2, QWERTY , _______, _______, _______, _______, _______, _______, _______, _______, _______, 
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 
@@ -224,29 +224,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case DVORAK:
+        case DWARFQ2:
           if (record->event.pressed) {
-            set_single_persistent_default_layer(_DVORAK);
+            set_single_persistent_default_layer(_DWARFQ2);
           }
           return false;
           break;
         case LOWER:
           if (record->event.pressed) {
-            layer_on(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(_NUMPAD);
+            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
           } else {
-            layer_off(_LOWER);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(_NUMPAD);
+            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
           }
           return false;
           break;
         case RAISE:
           if (record->event.pressed) {
-            layer_on(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_on(_NAV);
+            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
           } else {
-            layer_off(_RAISE);
-            update_tri_layer(_LOWER, _RAISE, _ADJUST);
+            layer_off(_NAV);
+            update_tri_layer(_NUMPAD, _NAV, _ADJUST);
           }
           return false;
           break;
@@ -276,7 +276,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(_LOWER, KC_SPC):
+        case LT(_NUMPAD, KC_SPC):
             return 0;
         default:
             return 125;
@@ -291,7 +291,7 @@ uint16_t muse_tempo = 50;
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
   if (muse_mode) {
-    if (IS_LAYER_ON(_RAISE)) {
+    if (IS_LAYER_ON(_NAV)) {
       if (clockwise) {
         muse_offset++;
       } else {
