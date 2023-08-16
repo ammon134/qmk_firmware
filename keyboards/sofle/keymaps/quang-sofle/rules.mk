@@ -5,3 +5,5 @@ ENCODER_ENABLE = yes
 CONSOLE_ENABLE = no
 EXTRAKEY_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+
+SRC += features/achordion.c

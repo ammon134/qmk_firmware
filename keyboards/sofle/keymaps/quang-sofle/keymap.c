@@ -1,19 +1,24 @@
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
     _COLEMAK,
-    _SEMIMAK,
+    _DWARFQ2,
     _LOWER,
     _RAISE,
+    _NAV,
+    _NUMPAD,
+    _SYMBOL,
+    _FUN,
     _ADJUST,
 };
 
 enum custom_keycodes {
     KC_QWERTY = SAFE_RANGE,
     KC_COLEMAK,
-    KC_SEMIMAK,
+    KC_DWARFQ2,
     KC_PRVWD,
     KC_NXTWD,
     KC_LSTRT,
@@ -41,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_QWERTY] = LAYOUT(
-                    KC_GRV,   KC_1,   KC_2,     KC_3,   KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TO(_LOWER),
-MT(MOD_LCTL|MOD_LSFT,KC_TAB), KC_Q,   KC_W,     KC_E,   KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        MT(MOD_LGUI, KC_ESC), KC_A,   KC_S,     KC_D,   KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,
-                    KC_LSFT,  KC_Z,   KC_X,     KC_C,   KC_V,    KC_B, KC_MUTE,   KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),     LT(_RAISE, KC_SPC), MT(MOD_RSFT, KC_BSPC), RCTL_T(KC_EQUAL), ALT_T(KC_UP), GUI_T(KC_DOWN)
+    KC_GRV,         KC_1,               KC_2,                   KC_3,                  KC_4,            KC_5,                           KC_6,                 KC_7,                     KC_8,           KC_9,           KC_0,               KC_BSPC,
+    KC_TAB,         KC_Q,               KC_W,                   KC_E,                  KC_R,            KC_T,                           KC_Y,                 KC_U,                     KC_I,           KC_O,           KC_P,               KC_DEL,
+    KC_ESC,         CTL_T(KC_A),        ALT_T(KC_S),            SFT_T(KC_D),           GUI_T(KC_F),     KC_G,                           KC_H,                 RGUI_T(KC_J),             RSFT_T(KC_K),   RALT_T(KC_L),   RCTL_T(KC_SCLN),    KC_QUOT,
+    KC_LSFT,        KC_Z,               KC_X,                   KC_C,                  KC_V,            KC_B,   KC_MUTE,    KC_MPLY,    KC_N,                 KC_M,                     KC_COMM,        KC_DOT,         KC_SLSH,            KC_RSFT,
+    MO(_ADJUST),    LT(_FUN, KC_ESC),   LT(_NUMPAD, KC_SPC),    LT(_LOWER, KC_SPC),    LT(_NAV, KC_ENT),                                LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),    OSL(_SYMBOL),   XXXXXXX,        XXXXXXX
 ),
 /*
  * COLEMAK
@@ -64,11 +69,11 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
  */
 
 [_COLEMAK] = LAYOUT(
-                    KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TO(_LOWER),
-MT(MOD_LCTL|MOD_LSFT,KC_TAB), KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,  KC_BSPC,
-        MT(MOD_LGUI, KC_ESC), KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                      KC_M,    KC_N,    KC_E,    KC_I,    KC_O,     KC_QUOT,
-                    KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_MUTE,    KC_MPLY, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),     LT(_RAISE, KC_SPC), MT(MOD_RSFT, KC_BSPC), RCTL_T(KC_EQUAL), ALT_T(KC_UP), GUI_T(KC_DOWN)
+    KC_GRV,         KC_1,               KC_2,                   KC_3,                  KC_4,            KC_5,                           KC_6,                 KC_7,                     KC_8,           KC_9,           KC_0,           KC_BSPC,
+    KC_TAB,         KC_Q,               KC_W,                   KC_F,                  KC_P,            KC_B,                           KC_J,                 KC_L,                     KC_U,           KC_Y,           KC_COMM,        KC_DEL,
+    KC_ESC,         CTL_T(KC_A),        ALT_T(KC_R),            SFT_T(KC_S),           GUI_T(KC_T),      KC_G,                           KC_M,                 RGUI_T(KC_N),             RSFT_T(KC_E),   RALT_T(KC_I),   RCTL_T(KC_O),   KC_SCLN,
+    KC_LSFT,        KC_Z,               KC_X,                   KC_C,                  KC_D,            KC_V,   KC_MUTE,    KC_MPLY,    KC_K,                 KC_H,                     KC_QUOT,        KC_SLSH,        KC_DOT,         KC_RSFT,
+    MO(_ADJUST),    LT(_FUN, KC_ESC),   LT(_NUMPAD, KC_SPC),    LT(_LOWER, KC_SPC),    LT(_NAV, KC_ENT),                                LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),    OSL(_SYMBOL),   XXXXXXX,        XXXXXXX
 ),
 /*
  * SEMIMAK
@@ -86,15 +91,37 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
  *            `----------------------------------'           '------''---------------------------'
  */
 
-[_SEMIMAK] = LAYOUT(
-                    KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TO(_LOWER),
-MT(MOD_LCTL|MOD_LSFT,KC_TAB), KC_F,   KC_L,    KC_H,    KC_V,    KC_Z,                      KC_QUOT, KC_W,    KC_U,    KC_O,    KC_Y,     KC_BSPC,
-        MT(MOD_LGUI, KC_ESC), KC_S,   KC_R,    KC_N,    KC_T,    KC_K,                      KC_C,    KC_D,    KC_E,    KC_A,    KC_I,     KC_SCLN,
-                    KC_LSFT,  KC_X,   KC_J,    KC_B,    KC_M,    KC_Q, KC_MUTE,    KC_MPLY, KC_P,    KC_G,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),     LT(_RAISE, KC_SPC), MT(MOD_RSFT, KC_BSPC), RCTL_T(KC_EQUAL), ALT_T(KC_UP), GUI_T(KC_DOWN)
+[_DWARFQ2] = LAYOUT(
+    KC_GRV,         KC_1,               KC_2,                   KC_3,                  KC_4,            KC_5,                           KC_6,                 KC_7,                     KC_8,           KC_9,           KC_0,           KC_BSPC,
+    KC_TAB,         KC_F,               KC_L,                   KC_H,                  KC_D,            KC_V,                           KC_Z,                 KC_Y,                     KC_O,           KC_U,           KC_COMM,        KC_DEL,
+    KC_ESC,         CTL_T(KC_S),        ALT_T(KC_R),            SFT_T(KC_S),           GUI_T(KC_T),      KC_M,                           KC_G,                 RGUI_T(KC_N),             RSFT_T(KC_E),   RALT_T(KC_I),   RCTL_T(KC_A),   KC_SCLN,
+    KC_LSFT,        KC_J,               KC_X,                   KC_B,                  KC_K,            KC_Q,   KC_MUTE,    KC_MPLY,    KC_P,                 KC_W,                     KC_QUOT,        KC_SLSH,        KC_DOT,         KC_RSFT,
+    MO(_ADJUST),    LT(_FUN, KC_ESC),   LT(_NUMPAD, KC_SPC),    LT(_LOWER, KC_SPC),    LT(_NAV, KC_ENT),                                LT(_NAV, KC_ENT),     MT(MOD_RSFT, KC_BSPC),    OSL(_SYMBOL),   XXXXXXX,        XXXXXXX
 ),
 
-/* LOWER
+/* SYMBOL
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |  `   |   !  |   @  |   #  |   $  |   %  |                    |   +  |   7  |   8  |   9  |   *  | Bksp |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | ESC  |   &  |   :  |  (   |   {  |   [  |-------.    ,-------|   -  |   4  |   5  |   6  |   /  |   |  |
+ * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
+ * | Shift|   ^  |   \  |  )   |   }  |   ]  |-------|    |-------|   0  |   1  |   2  |   3  |   \  | F12  |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR |  .   | TO(0)|
+ *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
+ *            `----------------------------------'            '------''---------------------------'
+ */
+[_SYMBOL] = LAYOUT(
+    KC_TILD,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,    KC_F7,          KC_F8,          KC_F9,          KC_F10,           XXXXXXX,
+    _______,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                         XXXXXXX,  XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,          XXXXXXX,
+    TO(0)  ,   KC_AMPR, KC_COLN, KC_LPRN, KC_LCBR, KC_LBRC,                         XXXXXXX,  OSM(MOD_RGUI),  OSM(MOD_RSFT),  OSM(MOD_RALT),  OSM(MOD_RCTL),    XXXXXXX,
+    _______,   KC_CIRC, KC_BSLS, KC_RPRN, KC_RCBR, KC_RBRC,   KC_MPLY,     _______, XXXXXXX,  XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,          XXXXXXX,
+                        _______, _______, _______, KC_MINUS,  KC_EQUAL,    _______, XXXXXXX,  XXXXXXX,        XXXXXXX,        XXXXXXX
+),
+
+/* NUMPAD
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -108,13 +135,36 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
  *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
  *            `----------------------------------'            '------''---------------------------'
  */
-[_LOWER] = LAYOUT(
-    _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,    KC_F7,  KC_F8,   KC_F9,  KC_F10,  TO(_RAISE),
-    _______,   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                         KC_PLUS,  KC_7,   KC_8,    KC_9,   KC_ASTR, KC_F11,
-    TO(0)  ,   KC_AMPR, KC_COLN, KC_LPRN, KC_LCBR, KC_LBRC,                         KC_MINS,  KC_4,   KC_5,    KC_6,   KC_SLSH, KC_PIPE,
-    _______,   KC_CIRC, KC_UNDS, KC_RPRN, KC_RCBR, KC_RBRC, KC_MPLY,       _______, KC_0,     KC_1,   KC_2,    KC_3,   KC_BSLS, KC_F12,
-                        _______, _______, _______, _______, _______,      _______, _______, KC_PDOT, _______, _______
+[_NUMPAD] = LAYOUT(
+    _______,   KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                               KC_F6,    KC_F7,  KC_F8,   KC_F9,  KC_F10,   XXXXXXX,
+    _______,   XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                             KC_SLSH,  KC_7,   KC_8,    KC_9,   KC_MINS,  KC_F11,
+    TO(0)  ,   OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  XXXXXXX,                             KC_SLSH,  KC_4,   KC_5,    KC_6,   KC_PLUS,  XXXXXXX,
+    _______,   XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,     KC_MPLY,    _______,    KC_0,     KC_1,   KC_2,    KC_3,   KC_EQUAL, KC_F12,
+               _______,        _______,        _______,        _______,        _______,                             KC_COMM,  KC_BSPC, KC_PDOT, XXXXXXX, XXXXXXX
 ),
+
+/* NAV
+ * ,----------------------------------------.                    ,-----------------------------------------.
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |      |En/Vi |Raycast|     |      |                    | PgUp | PWrd |  Up  | NWrd | DWrd | Bspc |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | ESC  |      | LCtl |LShift| LAlt | Caps |-------.    ,-------| PgDwn| Left | Down | Rigth|      | Bspc |
+ * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
+ * |Shift | Undo |  Cut | Copy | Paste| Redo |-------|    |-------|      | LStr |      | LEnd | DLine| Shift|
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *           | LGUI | LAlt | LCTR |LOWER  | /SFTENT /       \BckSpc\  |RAISE  | RCTR | TO(0)|      |
+ *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
+ *            `----------------------------------'            '------''---------------------------'
+ */
+[_NAV] = LAYOUT(
+    XXXXXXX, XXXXXXX,       XXXXXXX,         XXXXXXX,        XXXXXXX,        XXXXXXX,                          _______,     _______,    _______, _______,  _______ ,    XXXXXXX,
+    XXXXXXX, XXXXXXX,        C(KC_W),        XXXXXXX,        XXXXXXX,        XXXXXXX,                          A(KC_UP),    KC_PRVWD,   KC_UP,   KC_NXTWD, A(KC_BSPC),  XXXXXXX,
+    TO(0)  , OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  KC_CAPS,                          A(KC_DOWN),  KC_LEFT,    KC_DOWN, KC_RGHT,  KC_BSPC,     XXXXXXX,
+    XXXXXXX, KC_UNDO,        KC_CUT,         KC_COPY,        KC_PASTE,       KC_REDO,   KC_MPLY,      _______, KC_DEL,      KC_LSTRT,   C(KC_A), KC_LEND,  KC_DLINE,    _______,
+                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                       _______,     KC_BSPC,    _______, _______,  XXXXXXX
+),
+
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -129,13 +179,14 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
  *           |      |      |      |(Space)|/       /         \      \ |(Enter)|      |      |      |
  *            `----------------------------------'            '------''---------------------------'
  */
-[_RAISE] = LAYOUT(
-    _______, _______ , _______ , _______ ,   _______ , _______,                          _______,     _______,    _______, _______,  _______ ,    TO(_ADJUST),
-    _______, XXXXXXX, C(KC_W),   XXXXXXX,    XXXXXXX,  XXXXXXX,                          A(KC_UP),    KC_PRVWD,   KC_UP,   KC_NXTWD, A(KC_BSPC),  KC_BSPC,
-    TO(0)  , C(KC_A), KC_LSFT,   KC_LGUI,    KC_LALT,  KC_CAPS,                          A(KC_DOWN),  KC_LEFT,    KC_DOWN, KC_RGHT,  XXXXXXX,     KC_BSPC,
-    _______, KC_UNDO, KC_CUT,    KC_COPY,    KC_PASTE, KC_REDO,  KC_MPLY,       _______, KC_DEL,      KC_LSTRT,   XXXXXXX, KC_LEND,  KC_DLINE,    _______,
-                            _______, _______, _______, _______, _______,       _______, _______, _______, _______, XXXXXXX
+[_FUN] = LAYOUT(
+    _______, _______ ,       _______,        _______,        _______,        _______,                            _______,    _______,    _______,   _______,   _______,  XXXXXXX,
+    _______, XXXXXXX,        XXXXXXX,        XXXXXXX,        LSG(KC_4),      LSG(KC_5),                          KC_F12,     KC_F7,      KC_F8,     KC_F9,     XXXXXXX,  XXXXXXX,
+    TO(0)  , OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  XXXXXXX,                            KC_F11,     KC_F4,      KC_F5,     KC_F6,     XXXXXXX,  XXXXXXX,
+    _______, KC_UNDO,        KC_CUT,         KC_COPY,        KC_PASTE,       KC_REDO,   KC_MPLY,       _______,  KC_F10,     KC_F1,      KC_F2,     KC_F3,     XXXXXXX,  XXXXXXX,
+                            _______, _______, _______, _______, _______,                                         _______, _______, _______, _______, XXXXXXX
 ),
+
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -152,10 +203,10 @@ GUI_T(KC_LEFT),ALT_T(KC_RGHT),CTL_T(KC_MINUS), LT(_LOWER, KC_SPC), LT(_RAISE, KC
  */
 [_ADJUST] = LAYOUT(
     XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    QK_BOOT,  XXXXXXX,    KC_QWERTY,  KC_COLEMAK, KC_SEMIMAK,  XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    TO(0)  ,  XXXXXXX,    CG_TOGG,    XXXXXXX,    XXXXXXX,     XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                                _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+    XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX,                     QK_BOOT, DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    TO(0)  ,  KC_COLEMAK, KC_DWARFQ2, KC_QWERTY,  XXXXXXX,     XXXXXXX,                     CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX,  XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                           _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______
   )
 };
 
@@ -189,8 +240,8 @@ static void print_status_narrow(void) {
         case _COLEMAK:
             oled_write_ln_P(PSTR("Clmk"), false);
             break;
-        case _SEMIMAK:
-            oled_write_ln_P(PSTR("Smmk"), false);
+        case _DWARFQ2:
+            oled_write_ln_P(PSTR("Dwq2"), false);
             break;
         default:
             oled_write_P(PSTR("Undef"), false);
@@ -200,15 +251,21 @@ static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case _COLEMAK:
-        case _SEMIMAK:
+        case _DWARFQ2:
         case _QWERTY:
             oled_write_P(PSTR("Base\n"), false);
             break;
-        case _RAISE:
-            oled_write_P(PSTR("Raise"), false);
+        case _NAV:
+            oled_write_P(PSTR("Nav"), false);
             break;
-        case _LOWER:
-            oled_write_P(PSTR("Lower"), false);
+        case _SYMBOL:
+            oled_write_P(PSTR("Sym"), false);
+            break;
+        case _NUMPAD:
+            oled_write_P(PSTR("Num"), false);
+            break;
+        case _FUN:
+            oled_write_P(PSTR("Fun"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
@@ -239,10 +296,6 @@ bool oled_task_user(void) {
 
 #endif
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_QWERTY:
@@ -255,9 +308,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_COLEMAK);
             }
             return false;
-        case KC_SEMIMAK:
+        case KC_DWARFQ2:
             if (record->event.pressed) {
-                set_single_persistent_default_layer(_SEMIMAK);
+                set_single_persistent_default_layer(_DWARFQ2);
             }
             return false;
         case KC_PRVWD:
@@ -389,6 +442,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_Z);
             }
             return false;
+    };
+    if (!process_achordion(keycode, record)) { 
+        return false; 
     }
     return true;
 }
@@ -400,6 +456,35 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         default:
             return 125;
     }
+}
+
+bool achordion_eager_mod(uint8_t mod) {
+  switch (mod) {
+    case MOD_LSFT:
+    case MOD_RSFT:
+    case MOD_LCTL:
+    case MOD_RCTL:
+      return true;  // Eagerly apply Shift and Ctrl mods.
+
+    default:
+      return false;
+  }
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+void matrix_scan_user(void) {
+    achordion_task();
 }
 
 #ifdef ENCODER_ENABLE

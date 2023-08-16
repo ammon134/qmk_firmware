@@ -179,9 +179,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_FUN] = LAYOUT_preonic_grid(
   _______,        _______,        _______,        _______,        _______,    _______,    _______,    _______,    _______,    _______,   _______,   _______,
-  XXXXXXX,        XXXXXXX,        XXXXXXX,        LSG(KC_4),      LSG(KC_5),  KC_VOLD,    KC_VOLU,    KC_F12,     KC_F7,      KC_F8,     KC_F9,     A(KC_BSPC),
-  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  KC_CAPS,    KC_MUTE,    KC_MPLY,    KC_F11,     KC_F4,      KC_F5,     KC_F6,     XXXXXXX,
-  G(KC_Z),        G(KC_X),        G(KC_C),        G(KC_V),        LSG(KC_Z),  KC_BRMD,    KC_BRMU,    KC_F10,     KC_F1,      KC_F2,     KC_F3,     G(KC_BSPC),
+  XXXXXXX,        XXXXXXX,        XXXXXXX,        LSG(KC_4),      LSG(KC_5),  KC_VOLD,    KC_VOLU,    KC_F12,     KC_F7,      KC_F8,     KC_F9,     XXXXXXX,
+  OSM(MOD_LCTL),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LGUI),  XXXXXXX,    KC_MUTE,    KC_MPLY,    KC_F11,     KC_F4,      KC_F5,     KC_F6,     XXXXXXX,
+  G(KC_Z),        G(KC_X),        G(KC_C),        G(KC_V),        LSG(KC_Z),  KC_BRMD,    KC_BRMU,    KC_F10,     KC_F1,      KC_F2,     KC_F3,     XXXXXXX,
   XXXXXXX,        XXXXXXX,        TO(0)  ,        XXXXXXX,        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_BSPC,    XXXXXXX,   XXXXXXX,   XXXXXXX
 ),
 
@@ -201,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_preonic_grid(
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   AU_ON,   AU_NEXT, MU_ON  , MU_NEXT, MI_ON,   _______, _______, QK_BOOT, DB_TOGG, _______, _______, _______,
-  AU_OFF , AU_PREV, MU_OFF , _______, MI_OFF,  _______, _______, CG_NORM, CG_SWAP, _______, _______, _______,
+  AU_OFF , AU_PREV, MU_OFF , _______, MI_OFF,  _______, _______, CG_TOGG, _______, _______, _______, _______,
   COLEMAK, DWARFQ2, QWERTY , _______, _______, _______, _______, _______, _______, _______, _______, _______, 
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
@@ -283,7 +283,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
   // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  // alphas. Add `other_record->event.key.row % (MATRIX_ROWS / 2) >= 4` for split keyboard.
   if (other_record->event.key.row >= 4) { return true; }
 
   // Otherwise, follow the opposite hands rule.
